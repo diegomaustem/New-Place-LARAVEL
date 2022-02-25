@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Store extends Model
 {
+    protected $fillable = ['name', 'description', 'phone', 'mobile_phone', 'slug'];
 
     public function user()
     {
@@ -15,6 +16,5 @@ class Store extends Model
     public function product()
     {
         return $this->hasMany(Product::class);
-
     }
 }
