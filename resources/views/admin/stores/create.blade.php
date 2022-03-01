@@ -4,7 +4,7 @@
 @section('content')
 
     <h1>Criar Loja</h1>
-    <form action="/admin/stores/store" method="post">
+    <form action="{{ route('admin.stores.create') }}" method="post">
         @csrf
         <div class="mb-3">
             <label class="form-label">Nome da Loja:</label>
@@ -34,7 +34,9 @@
         <div class="mb-3">
             <label class="form-label">Usuário:</label>
             <select name="user" class="form-control">
-                <option>Fazer o foreach</option>
+                @foreach($users as $user)
+                    <option>{{$user->name}}</option>
+                @endforeach
             </select>
         </div>
 
