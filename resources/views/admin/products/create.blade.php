@@ -3,11 +3,11 @@
 
 @section('content')
 
-    <h1>Criar Loja</h1>
-    <form action="{{ route('admin.stores.store') }}" method="post">
+    <h1>Criar Produto</h1>
+    <form action="{{ route('admin.products.store') }}" method="post">
         @csrf
         <div class="mb-3">
-            <label class="form-label">Nome da Loja:</label>
+            <label class="form-label">Nome do produto:</label>
             <input type="text" class="form-control" name="name">
         </div>
 
@@ -17,13 +17,13 @@
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Telefone:</label>
-            <input type="text" class="form-control" name="phone">
+            <label class="form-label">Conteúdo:</label>
+            <textarea class="form-control" name="body" rows="3"></textarea>
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Celular/Whatsap:</label>
-            <input type="text" class="form-control" name="mobile_phone">
+            <label class="form-label">Preço:</label>
+            <input type="text" class="form-control" name="price">
         </div>
 
         <div class="mb-3">
@@ -32,16 +32,16 @@
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Usuário:</label>
-            <select name="user" class="form-control">
-                @foreach($users as $user)
-                    <option>{{$user->name}}</option>
+            <label class="form-label">Lojas:</label>
+            <select name="store" class="form-control">
+                @foreach($stores as $store)
+                    <option value="{{$store->id}}">{{$store->name}}</option>
                 @endforeach
             </select>
         </div>
 
         <div class="form-group">
-            <button type="submit" class="btn btn-lg btn-success">Enviar</button>
+            <button type="submit" class="btn btn-lg btn-success">Criar Produto</button>
         </div>
     </form>
 

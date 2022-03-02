@@ -25,19 +25,15 @@ class StoreController extends Controller
 
     public function store(Request $request)
     {
+
         $data = $request->all();
 
-        $user = User::where('name', $data['user'])->first()->toArray();
-        //var_dump($user['id']);
+        $user = User::where('name', $data['user'])->first();
+        $store = $user->store()->create($data);
 
-        //$user = User::find($data['user']);
+        flash('Loja criada.')->success();
 
-        // var_dump($data);
-        //$store = $user->store()->create($data);
-
-
-        // flash('Loja criada.')->success();
-        // return redirect()->route('admin.stores.index');
+        return redirect()->route('admin.stores.index');
     }
 
     public function edit($store)
