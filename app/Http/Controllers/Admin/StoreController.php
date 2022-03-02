@@ -57,7 +57,7 @@ class StoreController extends Controller
 
     public function destroy($store)
     {
-        $store = Store::find($store);
+        $store = Store::findOrFail($store);
         $store->delete();
 
         flash('Loja Removida.')->success();

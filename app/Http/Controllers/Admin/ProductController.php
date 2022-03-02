@@ -76,6 +76,11 @@ class ProductController extends Controller
 
     public function destroy($product)
     {
-        //
+        $product = Product::findOrFail($product);
+        $product->delete();
+
+        flash('Produto Deletado.')->success();
+
+        return redirect()->route('admin.products.index');
     }
 }

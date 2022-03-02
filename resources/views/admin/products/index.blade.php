@@ -18,10 +18,18 @@
                 <tr>
                     <td>{{$product->id}}</td>
                     <td>{{$product->name}}</td>
-                    <td>{{$product->price}}</td>
-                    <td> <a href="{{ route('admin.products.edit', ['product' => $product->id]) }}" class="btn btn-sm btn-warning">Editar</a></td>
-                    <td> <a href="{{ route('admin.products.destroy', ['product' => $product->id]) }}" class="btn btn-sm btn-danger">Remover</a></td>
-                </tr>
+                    <td>$ {{number_format($product->price, 2, ',', '.')}}</td>
+                    <td>
+                        <div class="btn-group">
+                            <a href="{{ route('admin.products.edit', ['product' => $product->id]) }}" class="btn btn-sm btn-warning">Editar</a>&nbsp;
+                            <form action="{{ route('admin.products.destroy', ['product' => $product->id]) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-sm btn-danger">Remover</button>
+                            </form>
+                        </div>
+                    </td>
+                    </tr>
             @endforeach
         </tbody>
     </table>

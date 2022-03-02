@@ -14,7 +14,7 @@ Route::prefix('admin')->group(function()
         Route::post('/store', [StoreController::class, 'store'])->name('store');
         Route::get('/{store}/edit', [StoreController::class, 'edit'])->name('edit');
         Route::put('/update/{store}', [StoreController::class, 'update'])->name('update');
-        Route::get('/destroy/{store}', [StoreController::class, 'destroy'])->name('destroy');
+        Route::delete('/destroy/{store}', [StoreController::class, 'destroy'])->name('destroy');
     });
 
     Route::prefix('products')->name('admin.products.')->group(function()
@@ -24,7 +24,7 @@ Route::prefix('admin')->group(function()
         Route::post('/store', [ProductController::class, 'store'])->name('store');
         Route::get('/{product}/edit', [ProductController::class, 'edit'])->name('edit');
         Route::put('/update/{product}', [ProductController::class, 'update'])->name('update');
-        Route::get('/destroy/{product}', [ProductController::class, 'destroy'])->name('destroy');
+        Route::delete('/destroy/{product}', [ProductController::class, 'destroy'])->name('destroy');
     });
 
      // Route::resource('/products', ProductController::class);
