@@ -10,6 +10,7 @@
             <th scope="col">#</th>
             <th scope="col">Nome</th>
             <th scope="col">Preço</th>
+            <th scope="col">Loja</th>
             <th scope="col">Ações</th>
         </tr>
         </thead>
@@ -19,6 +20,7 @@
                     <td>{{$product->id}}</td>
                     <td>{{$product->name}}</td>
                     <td>$ {{number_format($product->price, 2, ',', '.')}}</td>
+                    <td>{{$product->store->name}}</td>
                     <td>
                         <div class="btn-group">
                             <a href="{{ route('admin.products.edit', ['product' => $product->id]) }}" class="btn btn-sm btn-warning">Editar</a>&nbsp;
