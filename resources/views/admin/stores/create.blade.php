@@ -31,15 +31,6 @@
             <input type="text" class="form-control" name="slug">
         </div>
 
-        <div class="mb-3">
-            <label class="form-label">Usuário:</label>
-            <select name="user" class="form-control">
-                @foreach($users as $user)
-                    <option>{{$user->name}}</option>
-                @endforeach
-            </select>
-        </div>
-
         <div class="form-group">
             <button type="submit" class="btn btn-lg btn-success">Enviar</button>
         </div>
