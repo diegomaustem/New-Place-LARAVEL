@@ -39,11 +39,11 @@ class ProductController extends Controller
     {
         $data = $request->all();
 
-        $store = Store::findOrFail($data['store']);
+        //$store = Store::findOrFail($data['store']);
+        $store = auth()->user()->store;
         $store->product()->create($data);
 
         flash('Produto criado.')->success();
-
         return redirect()->route('admin.products.index');
     }
 
