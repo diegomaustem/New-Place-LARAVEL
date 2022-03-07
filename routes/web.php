@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\StoreController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\HomeController;
 
 
@@ -38,9 +39,9 @@ Route::prefix('admin')->group(function()
         Route::get('/', [CategoryController::class, 'index'])->name('index')->middleware('auth');
         Route::get('/create', [CategoryController::class, 'create'])->name('create')->middleware('auth')->middleware('auth');
         Route::post('/store', [CategoryController::class, 'store'])->name('store')->middleware('auth');
-        Route::get('/{product}/edit', [CategoryController::class, 'edit'])->name('edit')->middleware('auth');
-        Route::put('/update/{product}', [CategoryController::class, 'update'])->name('update')->middleware('auth');
-        Route::delete('/destroy/{product}', [CategoryController::class, 'destroy'])->name('destroy')->middleware('auth');
+        Route::get('/{category}/edit', [CategoryController::class, 'edit'])->name('edit')->middleware('auth');
+        Route::put('/update/{category}', [CategoryController::class, 'update'])->name('update')->middleware('auth');
+        Route::delete('/destroy/{category}', [CategoryController::class, 'destroy'])->name('destroy')->middleware('auth');
     });
 
         // Route::resource('/products', ProductController::class);

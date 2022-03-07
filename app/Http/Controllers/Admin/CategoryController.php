@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\CategoryRequest;
 
+
 class CategoryController extends Controller
 {
 
@@ -19,9 +20,9 @@ class CategoryController extends Controller
 
     public function index()
     {
-	    $categories = $this->category->paginate(10);
+	    $categories = Category::paginate(10);
 
-	    return view('admin.categories.index', compact('categories'));
+        return view('admin.categories.index', ['categories' => $categories]);
     }
 
     public function create()
@@ -35,7 +36,7 @@ class CategoryController extends Controller
 
 	    $category = $this->category->create($data);
 
-	    flash('Categoria Criado com Sucesso!')->success();
+	    flash('Categoria criada.')->success();
 	    return redirect()->route('admin.categories.index');
     }
 
@@ -58,7 +59,7 @@ class CategoryController extends Controller
 	    $category = $this->category->find($category);
 	    $category->update($data);
 
-	    flash('Categoria Atualizada com Sucesso!')->success();
+	    flash('Categoria atualizada.')->success();
 	    return redirect()->route('admin.categories.index');
     }
 
@@ -67,7 +68,7 @@ class CategoryController extends Controller
 	    $category = $this->category->find($category);
 	    $category->delete();
 
-	    flash('Categoria Removida com Sucesso!')->success();
+	    flash('Categoria removida.')->success();
 	    return redirect()->route('admin.categories.index');
     }
 
