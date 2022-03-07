@@ -33,14 +33,23 @@ Route::prefix('admin')->group(function()
         Route::delete('/destroy/{product}', [ProductController::class, 'destroy'])->name('destroy')->middleware('auth');
     });
 
+    Route::prefix('categories')->name('admin.categories.')->group(function()
+    {
+        Route::get('/', [CategoryController::class, 'index'])->name('index')->middleware('auth');
+        Route::get('/create', [CategoryController::class, 'create'])->name('create')->middleware('auth')->middleware('auth');
+        Route::post('/store', [CategoryController::class, 'store'])->name('store')->middleware('auth');
+        Route::get('/{product}/edit', [CategoryController::class, 'edit'])->name('edit')->middleware('auth');
+        Route::put('/update/{product}', [CategoryController::class, 'update'])->name('update')->middleware('auth');
+        Route::delete('/destroy/{product}', [CategoryController::class, 'destroy'])->name('destroy')->middleware('auth');
+    });
+
         // Route::resource('/products', ProductController::class);
         // Route::resource('/stores', StoreController::class);
-
 });
 
 
 
-    Auth::routes();
+Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
 

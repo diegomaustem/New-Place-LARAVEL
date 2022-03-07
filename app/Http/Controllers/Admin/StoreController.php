@@ -24,11 +24,9 @@ class StoreController extends Controller
 
     public function create()
     {
-
         $users = User::all(['id', 'name']);
 
         return view('admin.stores.create', ['users' => $users]);
-
     }
 
     public function store(StoreRequest $request)
@@ -37,7 +35,7 @@ class StoreController extends Controller
         $data = $request->all();
 
         $user = auth()->user();
-      
+
         $store = $user->store()->create($data);
 
         flash('Loja criada.')->success();

@@ -23,6 +23,9 @@
         <li class="nav-item @if(request()->is('admin/products*')) active @endif">
           <a class="nav-link" href="{{route('admin.products.index')}}">Produtos</a>
         </li>
+        <li class="nav-item @if(request()->is('admin/categories*')) active @endif">
+            <a class="nav-link" href="{{route('admin.categories.index')}}">Categorias</a>
+          </li>
       </ul>
       <div class="d-flex">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -35,7 +38,6 @@
                         @csrf
                     </form>
                 </li>
-               
             </ul>
       </div>
       @endauth
