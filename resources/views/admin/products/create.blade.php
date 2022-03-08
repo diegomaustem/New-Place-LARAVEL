@@ -4,7 +4,7 @@
 @section('content')
 
     <h1>Criar Produto</h1>
-    <form action="{{ route('admin.products.store') }}" method="post">
+    <form action="{{ route('admin.products.store') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
             <label class="form-label">Nome do produto:</label>
@@ -26,7 +26,6 @@
                         {{$message}}
                     </div>
                 @enderror
-
         </div>
 
         <div class="mb-3">
@@ -41,7 +40,7 @@
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Preço:</label>
+             <label class="form-label">Preço:</label>
              <input type="text" name="price" class="form-control @error('price') is-invalid @enderror" value="{{old('price')}}">
 
                 @error('price')
@@ -58,6 +57,11 @@
                         <option value="{{$category->id}}">{{$category->name}}</option>
                     @endforeach
                 </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Fotos do produto</label>
+            <input type="file" name="photos[]" class="form-control" multiple>
         </div>
 
         <div class="mb-3">
