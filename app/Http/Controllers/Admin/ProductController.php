@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest;
@@ -29,9 +30,9 @@ class ProductController extends Controller
 
     public function create()
     {
-        $stores = Store::all(['id', 'name']);
+        $categories = Category::all(['id', 'name']);
 
-        return view('admin.products.create', ['stores' => $stores]);
+        return view('admin.products.create', ['categories' => $categories]);
     }
 
 
@@ -39,9 +40,10 @@ class ProductController extends Controller
     {
         $data = $request->all();
 
-        //$store = Store::findOrFail($data['store']);
         $store = auth()->user()->store;
-        $store->product()->create($data);
+        $product = $store->product()->create($data);
+
+        $product->categories()->sync($data['categories']);
 
         flash('Produto criado.')->success();
         return redirect()->route('admin.products.index');
@@ -57,8 +59,9 @@ class ProductController extends Controller
     public function edit($product)
     {
         $product = Product::findOrFail($product);
+        $categories = Category::all(['id', 'name']);
 
-        return view('admin.products.edit', ['product' => $product]);
+        return view('admin.products.edit', ['product' => $product, 'categories' => $categories]);
     }
 
 
@@ -68,6 +71,7 @@ class ProductController extends Controller
 
         $product = Product::findOrFail($product);
         $product->update($data);
+        $product->categories()->sync($data['categories']);
 
         flash('Produto Atualizado.')->success();
 

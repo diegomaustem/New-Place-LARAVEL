@@ -20,7 +20,7 @@
         <div class="mb-3">
             <label class="form-label">Descrição:</label>
             <input type="text" name="description" class="form-control @error('description') is-invalid @enderror" value="{{old('description')}}">
-                
+
                 @error('description')
                     <div class="invalid-feedback">
                         {{$message}}
@@ -49,6 +49,15 @@
                         {{$message}}
                     </div>
                 @enderror
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Categorias:</label>
+                <select class="form-select" name="categories[]" id="" multiple>
+                    @foreach ($categories as $category)
+                        <option value="{{$category->id}}">{{$category->name}}</option>
+                    @endforeach
+                </select>
         </div>
 
         <div class="mb-3">
