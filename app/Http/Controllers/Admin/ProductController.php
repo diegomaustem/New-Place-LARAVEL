@@ -22,11 +22,11 @@ class ProductController extends Controller
 
     public function index()
     {
-        $products = Product::paginate(10);
+        $userStore = auth()->user()->store;
+        $products =  $userStore->product()->paginate(10);
 
         return view('admin.products.index', ['products' => $products]);
     }
-
 
     public function create()
     {
@@ -34,7 +34,6 @@ class ProductController extends Controller
 
         return view('admin.products.create', ['categories' => $categories]);
     }
-
 
     public function store(ProductRequest $request)
     {
@@ -49,12 +48,10 @@ class ProductController extends Controller
         return redirect()->route('admin.products.index');
     }
 
-
     public function show($id)
     {
         //
     }
-
 
     public function edit($product)
     {
@@ -63,7 +60,6 @@ class ProductController extends Controller
 
         return view('admin.products.edit', ['product' => $product, 'categories' => $categories]);
     }
-
 
     public function update(ProductRequest $request, $product)
     {
@@ -77,7 +73,6 @@ class ProductController extends Controller
 
         return redirect()->route('admin.products.index');
     }
-
 
     public function destroy($product)
     {
