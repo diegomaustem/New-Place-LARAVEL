@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\StoreController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ProductPhotoController;
 use App\Http\Controllers\HomeController;
 
 
@@ -44,9 +45,13 @@ Route::prefix('admin')->group(function()
         Route::delete('/destroy/{category}', [CategoryController::class, 'destroy'])->name('destroy')->middleware('auth');
     });
 
+        Route::post('photos/remove', [ProductPhotoController::class, 'removePhoto'])->name('admin.photo.remove')->middleware('auth');
+
+
         // Route::resource('/products', ProductController::class);
         // Route::resource('/stores', StoreController::class);
 });
+
 
 
 
