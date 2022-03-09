@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Category;
+use App\Traits\UploadTrait;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest;
@@ -13,12 +14,8 @@ use App\Store;
 
 class ProductController extends Controller
 {
-    /*private $product;
 
-    public function __construct(Product $product)
-    {
-        $this->product = $product;
-    }*/
+    use UploadTrait;
 
     public function index()
     {
@@ -45,7 +42,7 @@ class ProductController extends Controller
         $product->categories()->sync($data['categories']);
 
         if($request->hasFile('photos')) {
-            $images = $this->imageUpload($request, 'image');
+            $images = $this->imageUpload($request->file('photos'), 'image');
 
             $product->photos()->createMany($images);
         }
@@ -76,7 +73,7 @@ class ProductController extends Controller
         $product->categories()->sync($data['categories']);
 
         if($request->hasFile('photos')) {
-            $images = $this->imageUpload($request, 'image');
+            $images = $this->imageUpload($request->file('photos'), 'image');
 
             $product->photos()->createMany($images);
         }
@@ -96,16 +93,4 @@ class ProductController extends Controller
         return redirect()->route('admin.products.index');
     }
 
-    private function imageUpload(Request $request, $imageColumn)
-    {
-        $images = $request->file('photos');
-
-        $uploadedImages = [];
-
-        foreach($images as $image) {
-            $uploadedImages[] = [$imageColumn => $image->store('products', 'public')];
-        }
-
-        return $uploadedImages;
-    }
 }
