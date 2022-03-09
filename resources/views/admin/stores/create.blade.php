@@ -46,7 +46,13 @@
 
         <div class="mb-3">
             <label class="form-label">Fotos da loja</label>
-            <input type="file" name="logo" class="form-control">
+            <input type="file" name="logo" class="form-control @error('logo') is-invalid @enderror">
+
+                @error('logo')
+                    <div class="invalid-feedback">
+                        {{$message}}
+                    </div>
+                @enderror
         </div>
 
         <div class="mb-3">
