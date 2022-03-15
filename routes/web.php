@@ -6,11 +6,16 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductPhotoController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CartController;
 
 
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/product/{slug}', [HomeController::class, 'single'])->name('product.single');
 
-Route::get('/', function(){})->name('home');
-
+Route::prefix('cart')->name('cart.')->group(function(){
+    Route::get('/', [CartController::class, 'index'])->name('index');
+    Route::post('add', [CartController::class, 'add'])->name('add');
+});
 
 Route::prefix('admin')->group(function()
 {
