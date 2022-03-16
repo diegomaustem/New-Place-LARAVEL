@@ -11,8 +11,6 @@ class CartController extends Controller
     {
         $cart = session()->has('cart') ? session()->get('cart') : [];
 
-        //var_dump(gettype($cart));die();
-
         return view('cart', compact('cart'));
     }
 

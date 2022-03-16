@@ -37,7 +37,7 @@
                         <a class="nav-link" href="{{route('admin.stores.index')}}">Lojas <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item @if(request()->is('admin/products*')) active @endif">
-                        <a class="nav-link" href="{{route('admin.products.index')}}">Prdutos</a>
+                        <a class="nav-link" href="{{route('admin.products.index')}}">Produtos</a>
                     </li>
                     <li class="nav-item @if(request()->is('admin/categories*')) active @endif">
                         <a class="nav-link" href="{{route('admin.categories.index')}}">Categorias</a>
@@ -57,21 +57,22 @@
                         </li>
                     </ul>
                 </div>
+
         @endauth
 
-        <div class="my-2 my-lg-0">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a href="{{ route('cart.index') }}" class="nav-link">
-                        @if(session()->has('cart'))
+                <div class="my-2 my-lg-0">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a href="{{ route('cart.index') }}" class="nav-link">
+                                @if(session()->has('cart'))
 
-                            <span class="badge badge-danger">{{count(session()->get('cart'))}}</span>
-                        @endif
-                        <i class="fa fa-shopping-cart fa-2x"></i>
-                    </a>
-                </li>
-            </ul>
-        </div>
+                                    <span class="badge badge-danger">{{count(session()->get('cart'))}}</span>
+                                @endif
+                                <i class="fa fa-shopping-cart fa-2x"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
 
     </div>
 </nav>
