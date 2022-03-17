@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\StoreController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductPhotoController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CartController;
 
@@ -18,6 +19,12 @@ Route::prefix('cart')->name('cart.')->group(function(){
     Route::get('remove/{slug}', [CartController::class, 'remove'])->name('remove');
     Route::get('cancel', [CartController::class, 'cancel'])->name('cancel');
 });
+
+
+Route::prefix('checkout')->name('checkout.')->group(function(){
+    Route::get('/', [CheckoutController::class, 'index'])->name('index');
+});
+
 
 Route::prefix('admin')->group(function()
 {
