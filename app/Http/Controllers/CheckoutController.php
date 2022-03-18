@@ -21,6 +21,12 @@ class CheckoutController extends Controller
         return view('checkout');
     }
 
+    public function proccess(Request $request)
+    {
+        var_dump($request);
+
+    }
+
     private function makePagSeguroSession()
     {
 
