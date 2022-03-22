@@ -20,12 +20,10 @@ Route::prefix('cart')->name('cart.')->group(function(){
     Route::get('cancel', [CartController::class, 'cancel'])->name('cancel');
 });
 
-
 Route::prefix('checkout')->name('checkout.')->group(function(){
     Route::get('/', [CheckoutController::class, 'index'])->name('index');
     Route::post('/proccess', [CheckoutController::class, 'proccess'])->name('proccess');
 });
-
 
 Route::prefix('admin')->group(function()
 {
