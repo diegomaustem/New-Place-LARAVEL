@@ -23,6 +23,7 @@ Route::prefix('cart')->name('cart.')->group(function(){
 Route::prefix('checkout')->name('checkout.')->group(function(){
     Route::get('/', [CheckoutController::class, 'index'])->name('index');
     Route::post('/proccess', [CheckoutController::class, 'proccess'])->name('proccess');
+    Route::get('/thanks', [CheckoutController::class, 'thanks'])->name('thanks');
 });
 
 Route::prefix('admin')->group(function()
@@ -58,7 +59,7 @@ Route::prefix('admin')->group(function()
         Route::delete('/destroy/{category}', [CategoryController::class, 'destroy'])->name('destroy')->middleware('auth');
     });
 
-        Route::post('photos/remove', [ProductPhotoController::class, 'removePhoto'])->name('admin.photo.remove')->middleware('auth');
+    Route::post('photos/remove', [ProductPhotoController::class, 'removePhoto'])->name('admin.photo.remove')->middleware('auth');
 
 
         // Route::resource('/products', ProductController::class);
