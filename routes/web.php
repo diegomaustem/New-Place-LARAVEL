@@ -12,6 +12,8 @@ use App\Http\Controllers\CartController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/product/{slug}', [HomeController::class, 'single'])->name('product.single');
+Route::get('/category/{slug}', [CategoryController::class, 'index'])->name('category.single');
+Route::get('/store/{slug}', [StoreController::class, 'index'])->name('store.single');
 
 Route::prefix('cart')->name('cart.')->group(function(){
     Route::get('/', [CartController::class, 'index'])->name('index');
