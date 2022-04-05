@@ -18,8 +18,6 @@ class StoreController extends Controller
     {
         $store = $this->store->whereSlug($slug)->first();
 
-        var_dump($store);
-
-        //return view('store', compact('store'));
+        return view('store', compact('store'));
     }
 }
