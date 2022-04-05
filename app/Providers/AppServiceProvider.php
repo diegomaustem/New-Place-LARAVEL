@@ -28,7 +28,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Paginator::useBootstrap();
+
+         Paginator::useBootstrap();
 
         \PagSeguro\Library::initialize();
         \PagSeguro\Library::cmsVersion()->setName("Place")->setRelease("1.0.0");

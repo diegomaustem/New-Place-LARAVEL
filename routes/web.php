@@ -8,11 +8,12 @@ use App\Http\Controllers\Admin\ProductPhotoController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CategoryOutSideController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/product/{slug}', [HomeController::class, 'single'])->name('product.single');
-Route::get('/category/{slug}', [CategoryController::class, 'index'])->name('category.single');
+Route::get('/category/{slug}', [CategoryOutSideController::class, 'index'])->name('category.single');
 Route::get('/store/{slug}', [StoreController::class, 'index'])->name('store.single');
 
 Route::prefix('cart')->name('cart.')->group(function(){
@@ -63,9 +64,6 @@ Route::prefix('admin')->group(function()
 
     Route::post('photos/remove', [ProductPhotoController::class, 'removePhoto'])->name('admin.photo.remove')->middleware('auth');
 
-
-        // Route::resource('/products', ProductController::class);
-        // Route::resource('/stores', StoreController::class);
 });
 
 
