@@ -9,12 +9,13 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryOutSideController;
+use App\Http\Controllers\StoreOutSideController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/product/{slug}', [HomeController::class, 'single'])->name('product.single');
 Route::get('/category/{slug}', [CategoryOutSideController::class, 'index'])->name('category.single');
-Route::get('/store/{slug}', [StoreController::class, 'index'])->name('store.single');
+Route::get('/store/{slug}', [StoreOutSideController::class, 'index'])->name('store.single');
 
 Route::prefix('cart')->name('cart.')->group(function(){
     Route::get('/', [CartController::class, 'index'])->name('index');

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Store;
 
-class StoreController extends Controller
+class StoreOutSideController extends Controller
 {
     private $store;
 
