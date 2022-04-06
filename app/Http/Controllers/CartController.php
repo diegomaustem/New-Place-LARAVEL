@@ -26,7 +26,7 @@ class CartController extends Controller
             return redirect()->route('home');
 
         $product = array_merge($productData,
-                               $product->first( ['name', 'price'] )->toArray());
+                               $product->first( ['name', 'price', 'store_id'] )->toArray());
 
         if(session()->has('cart')) {
 
